@@ -1,0 +1,24 @@
+{
+  "name": "electron-prebuilt-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal electron-prebuilt application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-prebuilt ."
+  },
+  "repository": "https://github.com/electron-prebuilt/electron-prebuilt-quick-start",
+  "keywords": [
+    "electron-prebuilt",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron-prebuilt": "~1.6.2",
+    "electron-prebuilt-installer-dmg": "^0.2.1",
+    "electron-prebuilt-winstaller": "^2.6.3"
+  }
+}

@@ -1,0 +1,302 @@
+<html>
+  <head>
+		<meta charset="utf-8"/>
+		<title>ENDURE</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+ 
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="renderer.js"></script>
+        <script src="main.js"></script>
+		<script src="js/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+ 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		  
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  			
+		<link href="css/global.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		 
+  </head>
+
+  <body>
+
+		<a class="back"></a>
+
+		<div id="stage">
+
+			<div id="step1">
+				<div class="content">
+					<div class="wrapper">
+  					<div class="box a">	
+					<a class="button encrypt green">Encryption</a>
+					<a class="button decrypt magenta">Decryption</a>
+				</div>
+				</div>
+				</div>
+			</div>
+
+			<div id="step2">
+
+					<div class="content if-encrypt">
+					
+					<br></br>
+
+					<label>Password :
+					  <input name="password" id="password" type="password" size="23" />
+	
+					</label>
+					<label>Confirm Password :
+					<input name="password" id="confirm_password" type="password" size="23" />
+
+					<button1 onclick="savePassword()" />Submit</button1>
+					<style>
+					button1{
+						color: black;
+						background-color: whitesmoke;
+						text-align: center;
+						display: inline-block;
+						font-size: 16px;
+						margin: 4px 2px;
+					}
+					</style>
+					<span id='message'></span>
+					</label>
+					
+					<script>
+
+					/*
+					Password Match
+					*/
+
+					$('#password, #confirm_password').on('keyup', function () {
+					if ($('#password').val() == $('#confirm_password').val()) {
+						$('#message').html('Matching').css('color', 'green');
+					} else 
+						$('#message').html('Not Matching').css('color', 'red');
+					});
+					
+					</script>
+				
+					<br></br>
+			
+				<div class="container">
+					<br>
+					<div class="panel-group">
+						<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">	
+							<a ="button green" data-toggle="collapse" href="#collapse1">Files</a>
+							</h4>
+						</div>
+			
+						<div id="collapse1" class="panel-collapse collapse">
+						
+						<h1 align="center">Choose which file to encrypt</h1>
+						<h2 align="center">An encrypted copy of the file will be generated. No data is sent to our server.</h2>
+						<a class="button browse blue">Browse</a>
+						<input type="file" id="encrypt-input" />
+						</div>
+					</div>
+				</div>
+				
+					<br></br>
+
+					<div class="panel-group">
+						<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a ="button green" data-toggle="collapse" href="#collapse2">Notes</a>
+							</h4>
+						</div>
+						
+						<div id="collapse2" class="panel-collapse collapse">
+						<br></br>
+						<textarea name="Text1" cols="155" rows="5" placeholder="Enter Text Here. Encrypted Value is shown below." style="border:1px solid black;" id = "txt" value="" onchange = "copyIt1()" onchange ="copyIt1()" onpaste  ="copyIt1()" oninput  ="copyIt1()"></textarea>
+
+							<br></br>
+							<textarea name="TextBox" style="border:1px solid black" cols="155" rows="5" p id="demo"> 
+</textarea></p>
+							<button>Copy Encrypted Value</button>
+					<script>
+
+						function copyIt1() {
+						var x = document.getElementById("txt").value;
+						var hw = encrypt(x);
+						document.getElementById("demo").innerHTML = hw;
+						console.log(hw);
+						}
+
+						/*
+						Copy Function
+						*/
+
+						$("button").click(function(){
+						$(demo).select();
+						document.execCommand('copy');
+						alert("Encrypted Value Copied")
+						});	
+				
+						</script>
+					</div>
+				</div>
+			</div>
+			<br></br>
+			<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+                      <div class="checkbox">
+                		<label data-toggle="collapse" data-target="#collapseOne">
+						<input type="checkbox" /> Click Here to view Email Templates
+					</label>
+            </div>
+			</h4>
+
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="well">
+						<p align="justify">Hi, 
+							I am storing some important documents in Durity for you. Whenever you get access to these documents,
+							you will need the following password "********" to decrypt the documents. Please keep this email safe
+							and note the password seperately. Without the password you will not be able to decrypt the encrypted
+							documents that you will receive from Durity. The algorithm used to encrypt the files is AES 256 Cipher Block 
+							Chaining (AES 256 CBC). You can use the free tool Endure or any other decryption tool to decrypt the
+							documents. In case you need any help in decrypting the documents, you can call the Durity Support Team at "________".<br><br>	
+							Regards<br>
+							{Your Name}</div></p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+				
+				<div class="content if-decrypt">
+					<br></br>		
+					<label>Enter Password :
+  					<input name="password" id="password1" type="password" size="23" />
+					</label>
+					<button onclick="retreivePassword()" />Submit</button>
+
+				<script>
+					function retreivePassword(){
+					
+					var wincredmgr = require('wincredmgr');
+					var password1 = document.getElementById("password1").value;
+				
+					var credentials = wincredmgr.ReadCredentials('Endure');
+
+					var orginalpass = credentials.password;
+					if(orginalpass==password1){
+						alert("Passwords Match")
+					}
+					else{
+					alert("Passwords Mismatch")
+					alert("Enter the correct Password")
+					}
+				}
+				</script>
+
+				<div class="container">
+				<br>
+				<div class="panel-group">
+					<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						<a ="button green" data-toggle="collapse" href="#collapse3">Files</a>		
+						</h4>
+					</div>
+
+					 <div id="collapse3" class="panel-collapse collapse">
+					<h1 align="center">Choose which file to decrypt</h1>
+					<h2 align="center" >Only files encrypted by this tool are accepted.</h2>
+					<a class="button browse blue">Browse</a>
+					<input type="file" id="decrypt-input" />
+					</div>
+				</div>
+			</div>
+	
+			<br></br>
+			
+				<div class="panel-group">
+					<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+						<a ="button green" data-toggle="collapse" href="#collapse4">Notes</a>
+						</h4>
+					</div>
+					
+					<div id="collapse4" class="panel-collapse collapse">
+					<br></br>
+					<textarea name="Text1" cols="155" rows="5" style="border:1px solid black;"  placeholder="Paste Encrypted Value Here." name="txt" id = "txt1" value="" onchange = "copyIt()" onchange = "copyIt()" onpaste  = "copyIt()" oninput  = "copyIt()"></textarea> 
+						  
+					    <br></br>
+					    <textarea name="TextBox" style="border:1px solid black"cols="155" rows="5" p id="demo1"></textarea></p>
+						<button>Click here to paste the Encrypted Value</button>
+
+
+						<script>
+						function copyIt() {
+						var y = document.getElementById("txt1").value;
+						var hw = decrypt(y)
+						document.getElementById("demo1").innerHTML = hw;
+						} 
+
+						/*
+						Paste Function
+						*/
+
+						$("button").click(function(){
+						$(txt1).select();
+						document.execCommand('paste');
+						});	
+						</script>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+			<div id="step3">
+
+				<div class="content if-encrypt">
+					<h1>Enter a pass phrase</h1>
+					<h2>This phrase will be used as an encryption key. Write it down or remember it; you won't be able to restore the file without it. </h2>
+
+					<input type="password" />
+					<a class="button process red">Encrypt!</a>
+				</div>
+
+				<div class="content if-decrypt">
+					<h1>Enter the pass phrase</h1>
+					<h2>Enter the pass phrase that was used to encrypt this file. It is not possible to decrypt it without it.</h2>
+
+					<input type="password" />
+					<a class="button process red">Decrypt!</a>
+				</div>
+
+			</div>
+
+			<div id="step4">
+
+				<div class="content">
+					<h1>Your file is ready!</h1>
+					<a class="button download green">Download</a>
+				</div>
+			</div>
+		</div>
+  </body>
+
+</html>
+
+ 
